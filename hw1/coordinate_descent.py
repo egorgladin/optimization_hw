@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from hw1_nelder_mead import bird_function, plot_bird_function
+from hw1.nelder_mead import bird_function, plot_bird_function
 import random
 
 
