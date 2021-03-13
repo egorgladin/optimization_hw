@@ -30,10 +30,6 @@ def main():
     constraints += [
         X[i, i] == 1 for i in range(n)
     ]
-    # I = np.eye(n)
-    # constraints += [
-    #     X*I == I
-    # ]
     prob = cp.Problem(cp.Maximize(cp.trace(L @ X)),
                       constraints)
     prob.solve(solver=cp.CVXOPT)
@@ -50,6 +46,7 @@ def main():
             x[j] = 1. if V[:, j] @ xi > 0 else -1.
         vals.append((x.T @ L @ x).item())
     plt.plot(vals, 'o', label="Goemans-Williamson")
+    plt.axhline(y=np.mean(vals), color='g', linestyle='-', label="Goemans-Williamson mean value")
 
     plt.legend()
     plt.savefig("max_cut.png", bbox_inches='tight')
